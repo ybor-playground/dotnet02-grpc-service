@@ -1,0 +1,65 @@
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "ybor.playground.dotnet02_grpc.service.grpc";
+option java_outer_classname = "Dotnet02GrpcServiceStubs";
+
+option csharp_namespace = "Dotnet02GrpcService.API";
+
+package ybor.playground.dotnet02_grpc.service.grpc;
+
+import "google/protobuf/wrappers.proto";
+
+service Dotnet02GrpcService {
+    rpc CreateDotnet02Grpc (Dotnet02GrpcDto) returns (CreateDotnet02GrpcResponse);
+    rpc GetDotnet02Grpcs (GetDotnet02GrpcsRequest) returns (GetDotnet02GrpcsResponse);
+    rpc GetDotnet02Grpc (GetDotnet02GrpcRequest) returns (GetDotnet02GrpcResponse);
+    rpc UpdateDotnet02Grpc (Dotnet02GrpcDto) returns (UpdateDotnet02GrpcResponse);
+    rpc DeleteDotnet02Grpc (DeleteDotnet02GrpcRequest) returns (DeleteDotnet02GrpcResponse);
+}
+
+
+message Dotnet02GrpcDto {
+    google.protobuf.StringValue id = 1;
+    string name = 2;
+}
+
+message GetDotnet02GrpcRequest {
+    string id = 1;
+}
+
+message GetDotnet02GrpcResponse {
+        Dotnet02GrpcDto dotnet02_grpc = 1;
+}
+
+message GetDotnet02GrpcsRequest {
+    int32 start_page = 1;
+    int32 page_size = 2;
+}
+
+message GetDotnet02GrpcsResponse {
+    repeated Dotnet02GrpcDto dotnet02_grpcs = 1;
+    bool has_next = 2;
+    bool has_previous = 3;
+    int32 next_page = 4;
+    int32 previous_page = 5;
+    int32 total_pages = 6;
+    int64 total_elements = 7;
+}
+
+message UpdateDotnet02GrpcResponse {
+    Dotnet02GrpcDto dotnet02_grpc = 1;
+}
+
+message CreateDotnet02GrpcResponse {
+    Dotnet02GrpcDto dotnet02_grpc = 1;
+}
+
+message DeleteDotnet02GrpcRequest {
+    string id = 1;
+}
+
+message DeleteDotnet02GrpcResponse {
+    bool deleted = 1;
+}
